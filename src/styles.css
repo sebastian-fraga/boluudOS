@@ -7,29 +7,70 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
+    min-height: 150vh;
     font-family: "Inter", sans-serif;
     color: #f2f2f2;
-    background: radial-gradient(circle 450px at 50% 100%, rgb(46, 55, 82), rgb(13, 13, 13));
+    background: rgb(13, 13, 13);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at bottom left,
+            rgb(39, 51, 78),
+            rgb(13, 13, 13));
+}
+
+.github-logo {
+    position: absolute;
+    left: 2em;
+    top: 4em;
+    opacity: 0.15;
+    transition: opacity 0.3s ease-out;
+}
+
+.github-logo:hover {
+    opacity: 0.8;
+}
+
+.github-logo:active {
+    opacity: 1;
 }
 
 .text-wrapper {
     display: grid;
+    flex: 1;
     place-content: center;
     text-align: center;
-    min-height: 30vh;
+    gap: 0.2em;
+    position: sticky;
+    top: 0vh;
+    min-height: 10vh;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+    will-change: opacity;
+    z-index: 1;
+
 
     & h1 {
         font-size: 3em;
         margin-bottom: 12px;
-        text-shadow: 1px 1px 50px rgb(134, 158, 229);
+        text-shadow: 1px 1px 20px rgb(134, 158, 229);
         font-weight: 400;
     }
 
@@ -37,60 +78,91 @@ body {
         word-spacing: 2px;
         font-weight: 500;
     }
+
+    & a.fa-arrow-down {
+        margin-top: 3em;
+        color: rgba(210, 226, 245, 0.885);
+        animation: bounce 2s infinite;
+        font-size: 1.6em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            color: rgba(189, 214, 245, 0.885);
+        }
+        &:active {
+            color: rgba(163, 203, 252, 0.885);
+        }
+    }
 }
 
 header {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
-    padding: 1em 1.5em;
-    position: relative;
-}
+    padding: 1.5em 3em;
+    margin-bottom: 2em;
+    transition: all 0.2s;
+    border-radius: 45px 45px 0 0;
 
-strong {
-    font-size: 15px;
-    font-weight: 400;
+    & strong {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+    & .header-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6em;
+
+        & img {
+            width: 19px;
+            height: auto;
+        }
+    }
 }
 
 .header-notch {
     position: absolute;
+    right: calc(33% - 1.5em);
     left: calc(33% - 1.5em);
     height: 30px;
-    width: calc(50% - 1.5em);
+    top: 1em;
+    width: 30%;
+    margin: 0 auto;
     background: #121212;
-    border-radius: 0 0 13px 13px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4em;
-}
-
-.header-right img {
-    width: 17px;
-    height: auto;
-    filter: invert(1);
+    border-radius: 25px;
+    z-index: 1000;
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 22vw;
-    height: 70vh;
-    border-radius: 50px 50px 5px 5px;
+    width: 23dvw;
+    max-width: 500px;
+    height: 85dvh;
+    border-radius: 50px 50px 36px 36px;
     outline: 2px solid #f2f2f2;
     border: 6px solid #1f1f1f;
     border-bottom: none;
     position: relative;
-    padding: 0 1em 1em 1em;
+    box-shadow: 0 0 35px #354A96;
+    z-index: 10;
+
 }
 
 #root::before {
     content: "";
-    background-image: url("https://wallpapercg.com/media/ts_v/26635.webp");
+    background-image:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.05) 50%,
+            rgba(0, 0, 0, 0.15) 100%),
+        url("https://wallpapercg.com/media/ts_v/26635.webp");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -100,16 +172,18 @@ strong {
     height: 100%;
     border-radius: 45px 45px 5px 5px;
     z-index: -1;
-    transform: scale(1);
-    filter: blur(1px) brightness(0.8);
+    filter: blur(0.3px) brightness(0.88) saturate(0.85);
 }
 
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    align-items: center;
-    row-gap: 2em;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+    gap: 1em;
+    justify-items: center;
+    align-items: start;
+    flex: 1;
+    padding: 1em;
 }
 
 main>a {
@@ -171,20 +245,17 @@ main>a {
     z-index: 100;
     transform: scale(0);
     transition: transform 0.3s ease-in-out;
-
 }
 
 .opened-app.visible {
     transform: scale(1);
-
 }
 
-iframe {
+.opened-app iframe {
     width: 100%;
-    border-radius: 45px 45px 0 0;
     height: 100%;
+    border-radius: 45px 45px 36px 36px;
     border: none;
-    transition: all 0.2s;
 }
 
 .home-indicator {
@@ -194,9 +265,11 @@ iframe {
     transform: translateX(-50%);
     width: 120px;
     height: 5px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(227, 228, 245, 0.6);
+    backdrop-filter: invert(1);
     border-radius: 10px;
     z-index: 1000;
+    cursor: pointer;
 }
 
 
@@ -208,13 +281,33 @@ footer {
     backdrop-filter: blur(6px);
     background: #f1f0f028;
     border: 1px solid #f1f0f02f;
-    width: 100%;
+    width: 95%;
     height: 80px;
+    margin: 1em auto;
+}
+
+.page-footer {
+    margin-top: 7em;
+    padding-bottom: 1em;
+    font-size: 0.5em;
+    color: #e6e6e6d0;
 }
 
 @media screen and (max-width: 1500px) {
     #root {
-        width: 90vw;
-        height: 70vh;
+        width: 90dvw;
+        height: 70dvh;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
     }
 }

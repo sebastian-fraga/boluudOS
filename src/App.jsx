@@ -24,42 +24,53 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-
+  const apps = [
+    { name: "FaceTime", img: "https://upload.wikimedia.org/wikipedia/commons/6/62/FaceTime_iOS.svg", link: "" },
+    { name: "Calendar", img: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Apple_Calendar_%28iOS%29.svg", link: "" },
+    { name: "Photos", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b4/c2/c5/b4c2c5e9-2963-ab4e-1bfe-c190ab45de0e/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Camera", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/67/a7/0e/67a70e05-65c5-f435-fe06-a2a5d07b3ceb/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Mail", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/f4/92/a5f492ef-0a00-36ae-9f64-b7ea39edaf4b/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Clock", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/01/15/88/01158845-97c8-5cd4-5560-bc8ddb2953a0/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Maps", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/64/4a/af/644aaf63-e217-2779-8098-876d5d30eb62/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Weather", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/18/7e/45/187e453a-6a92-f8f1-53b2-5d72a46a7e05/Placeholder.mill/200x200bb-75.webp", link: "https://sebaweather.vercel.app/" },
+    { name: "Vice Club", img: "https://viceclub.vercel.app/assets/images/main/logo.webp", link: "https://viceclub.vercel.app/" },
+    { name: "Facebook", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d7/7e/1e/d77e1e00-5095-7589-6794-bca16df6e54d/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Calculator", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0b/48/36/0b483611-ebfd-3f86-4636-529997a78283/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "GitHub", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ca/ca/62/caca6275-2086-ad07-8de3-268a44381593/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Reddit", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4e/f4/53/4ef453d8-e52b-bc85-9332-0bbb71647198/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "Spotify", img: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f3/9e/3e/f39e3e7f-56a7-aba3-3f75-740439b4a7b2/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/200x200ia-75.webp", link: "" },
+    { name: "Instagram", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/8a/90/50/8a905050-a62a-2c1c-a62a-dbb3c372e85d/Placeholder.mill/200x200bb-75.webp", link: "" },
+    { name: "ChatGPT", img: "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/44/51/68/445168d9-f590-1148-3f43-3c80db6e6a0e/Placeholder.mill/200x200bb-75.webp", link: "" },
+  ];
 
   const openApp = (link) => {
     if (!link) return;
     setOpenedLink(link);
   }
 
+
   return (
     <>
       <header>
         <strong>{currentTime}</strong>
         <div className="header-right">
-          <img src="https://img.icons8.com/sf-regular-filled/48/high-connection.png" alt="high-connection" />
-          <img src="https://img.icons8.com/sf-regular-filled/48/wifi.png" alt="wifi" />
-          <img src="https://img.icons8.com/sf-regular-filled/48/medium-battery.png" alt="medium-battery" />
+          <img src="./images/signal.webp" alt="high-connection" />
+          <img src="./images/wifi.webp" alt="wifi" />
+          <img src="./images/battery.webp" alt="medium-battery" />
         </div>
       </header>
       <div className="header-notch"></div>
 
       <main>
-        <AppIcon appName={"FaceTime"} appImg={"https://upload.wikimedia.org/wikipedia/commons/6/62/FaceTime_iOS.svg"}></AppIcon>
-        <AppIcon appName={"Calendar"} appImg={"https://upload.wikimedia.org/wikipedia/commons/5/5e/Apple_Calendar_%28iOS%29.svg"}></AppIcon>
-        <AppIcon appName={"Photos"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/b4/c2/c5/b4c2c5e9-2963-ab4e-1bfe-c190ab45de0e/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Camera"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/67/a7/0e/67a70e05-65c5-f435-fe06-a2a5d07b3ceb/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Mail"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a5/f4/92/a5f492ef-0a00-36ae-9f64-b7ea39edaf4b/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Clock"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/01/15/88/01158845-97c8-5cd4-5560-bc8ddb2953a0/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Maps"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/64/4a/af/644aaf63-e217-2779-8098-876d5d30eb62/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon link={"https://sebaweather.vercel.app/"} appName={"Weather"} onOpen={openApp} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/18/7e/45/187e453a-6a92-f8f1-53b2-5d72a46a7e05/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon link={"https://viceclub.vercel.app"} onOpen={openApp} appName={"Vice Club"} appImg={"https://viceclub.vercel.app/assets/images/main/logo.webp"}></AppIcon>
-        <AppIcon appName={"Facebook"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/d7/7e/1e/d77e1e00-5095-7589-6794-bca16df6e54d/Placeholder.mill/200x200bb-75.webp"} notif={12}></AppIcon>
-        <AppIcon appName={"Calculator"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/0b/48/36/0b483611-ebfd-3f86-4636-529997a78283/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"GitHub"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ca/ca/62/caca6275-2086-ad07-8de3-268a44381593/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Reddit"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/4e/f4/53/4ef453d8-e52b-bc85-9332-0bbb71647198/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
-        <AppIcon appName={"Spotify"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f3/9e/3e/f39e3e7f-56a7-aba3-3f75-740439b4a7b2/AppIcon-0-0-1x_U007emarketing-0-7-0-0-85-220.png/200x200ia-75.webp"}></AppIcon>
-        <AppIcon appName={"Instagram"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/8a/90/50/8a905050-a62a-2c1c-a62a-dbb3c372e85d/Placeholder.mill/200x200bb-75.webp"} notif={1}></AppIcon>
-        <AppIcon appName={"ChatGPT"} appImg={"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/44/51/68/445168d9-f590-1148-3f43-3c80db6e6a0e/Placeholder.mill/200x200bb-75.webp"}></AppIcon>
+        {apps.map(app => (
+          <AppIcon
+            key={app.name}
+            appName={app.name}
+            appImg={app.img}
+            onOpen={openApp}
+            link={app.link}
+          />
+        ))}
       </main>
 
       <section className={`opened-app ${openedLink ? "visible" : ""}`}>
